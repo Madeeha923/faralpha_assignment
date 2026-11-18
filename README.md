@@ -281,6 +281,10 @@ kubectl get hpa -n flask-assignment
 kubectl top pods -n flask-assignment
 ```
 
+The screenshot below records the observed HPA metrics and pod status. It shows two Flask replicas ready and current CPU utilization below the 70% target; it does not demonstrate scale-up.
+
+![HPA status, running pods, and CPU metrics](Screenshot%202026-11-18%20154918.png)
+
 The HPA is configured with:
 - CPU utilization target: 70%
 - Minimum replicas: 2
@@ -308,7 +312,9 @@ In another terminal, monitor the HPA:
 kubectl get hpa flask-hpa -n flask-assignment --watch
 ```
 
-The 3,000-request and 10,000-request tests completed successfully, with all requests succeeding.
+The captured 3,000-request run completed with 2,951 successful and 49 failed requests. The captured 10,000-request run completed with 10,000 successful and 0 failed requests.
+
+![Load test results for 3,000 and 10,000 requests](Screenshot%202026-11-18%20155758.png)
 
 The HPA configuration and metrics were verified. However, scaling beyond the initial two Flask replicas was not observed during my tests.
 
