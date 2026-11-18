@@ -1,0 +1,6 @@
+Flask>=3.0,<4.0
+pytest>=8.0,<10.0
+pymongo>=4.10,<5.0
+mongomock>=4.3,<5.0
+gunicorn
+requests>=2.32,<3.0

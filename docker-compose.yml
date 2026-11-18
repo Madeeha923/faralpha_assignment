@@ -1,0 +1,23 @@
+
+services:
+  mongodb:
+    image: mongo:8
+    container_name: flask-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  flask-app:
+    build: .
+    container_name: flask-app
+    ports:
+      - "5000:5000"
+    environment:
+      MONGODB_URI: mongodb://mongodb:27017/
+      MONGODB_DATABASE: flask_assignment
+    depends_on:
+      - mongodb
+
+volumes:
+  mongodb_data:
